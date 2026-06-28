@@ -56,3 +56,28 @@ def greet_many(names: list[str] | None = None) -> str:
         return f"Hello, {stripped_names[0]}!"
 
     return f"Hello, {' and '.join(stripped_names)}!"
+
+
+def greet_formal(title: str, name: str | None = None) -> str:
+    """Return a formal greeting message with a title.
+
+    Args:
+        title: The title (e.g. "Mr.", "Dr."). If empty, no title is used.
+        name: The name to greet.
+
+    Returns:
+        A formal greeting string.
+
+    Raises:
+        ValueError: If name is None.
+        TypeError: If name is not a string.
+    """
+    if name is None:
+        raise ValueError("Name cannot be None")
+    if not isinstance(name, str):
+        raise TypeError("Name must be a string")
+
+    name = name.strip()
+    if title:
+        return f"Hello, {title} {name}!"
+    return f"Hello, {name}!"
